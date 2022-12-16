@@ -1,0 +1,18 @@
+{% extends "productos/base.html" %}
+
+{% block contenido %}
+
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-2 row-cols-xl-4 justify-content-center"> 
+    <h1 class="mt-4">Ingresar un deporte nuevo</h1>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p> Nombre: <input type="text" name="nombre"> </p>
+        <p> Imagen: <input type="file" name="imagen"> </p>
+
+        <input type="submit" value="Crear deporte">
+
+    </form>
+    
+</div>
+{% endblock %}

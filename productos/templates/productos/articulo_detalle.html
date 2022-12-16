@@ -1,0 +1,41 @@
+{% extends "productos/base.html" %}
+
+{% block contenido %}
+
+    <!-- Product section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-4"><img class="card-img-top mb-1 mb-md-10" src="{{articulo.imagen.url}}" /></div>
+                <div class="col-md-6">
+                    <div class="bg-light mb-3">Deporte: {{articulo.deporte}} </div>
+                    <h1 class="display-5 fw-bolder">{{articulo.nombre}} - Marca: {{articulo.marca}}</h1>
+                    <div class="fs-5 mb-5">
+                        
+                        <span>Precio de lista: ${{articulo.precio}}</span>
+                    </div>
+                    <p class="lead">{{articulo.descripcion}}</p>
+                    <p class="lead">Fecha de publicación: {{articulo.publicacion}}</p>
+                    <a class="btn btn-outline-dark mt-auto" href="{% url 'articulos-listar' 0 %}">Volver</a>
+                </div>
+            </div>
+            <div class="row gx-4 gx-lg-5 align-items-left">
+                <form method="post">
+                    {% csrf_token %}
+                    <p> Mensaje: <input type="text" name="mensaje"></p>
+                    <input type="submit" value="Ingresar comentario">
+                </form>
+
+                <h1>Mensajes</h1>
+                {% for mensaje in mensajes %}
+                <p class="lead"> <b>Comentario de Usuario:</b> {{mensaje.user}} <br> <b>Fecha:</b> {{mensaje.fecha}}: <br> <b>Mensaje: </b> {{mensaje.mensaje}}</p> 
+                {% endfor %}
+
+                
+            </div>
+    
+        </div>
+ 
+    </section>
+
+{% endblock %}

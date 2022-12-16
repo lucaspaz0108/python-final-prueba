@@ -1,0 +1,20 @@
+{% extends "productos/base.html" %}
+
+{% block contenido %}
+
+<h1 class="mt-4"> Inicio de sesión </h1>
+
+{% if errors %}
+    <p>Errores en inicio de sesión: {{errors}}</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <input type="submit" value="Iniciar sesión">
+</form>
+
+<p> No estás registrado?? <a href="{% url 'usuarios-registrar' %}"> Registrate! </a></p>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "productos/base.html" %}
+
+{% block contenido %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container px-2 px-lg-2 mt-1">
+        <div class="row gx-3 gx-lg-3 row-cols-1 row-cols-md-1 row-cols-xl-2 justify-content-center">
+            <h1 class="mt-4">Editar Artículo</h1>
+            <div class="container px-4 px-lg-5 mt-5">
+                <p> Nombre: <input type="text" name="nombre" value="{{inicial.nombre}}"> </p>
+                <p> Descripcion: <input type="text" size="100" name="descripcion" value="{{inicial.descripcion}}"> </p>
+
+                <p> Precio: <input type="number" name="precio" value={{inicial.precio}}> </p>
+                <p> Publicacion: <input type="date" name="publicacion" value=Date().toLocaleDateString()> </p>
+                
+                <input type="submit" value="Guardar cambios">
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

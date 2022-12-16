@@ -1,0 +1,34 @@
+{% extends "productos/base.html" %}
+
+{% block contenido %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container px-2 px-lg-2 mt-1">
+        <div class="row gx-3 gx-lg-3 row-cols-1 row-cols-md-1 row-cols-xl-2 justify-content-center">
+            <h1 class="mt-4">Nuevo Artículo</h1>
+            <div class="container px-4 px-lg-5 mt-5">
+                <p> Nombre: <input type="text" name="nombre"> </p>
+                <p> Descripcion: <input type="text" size="100" name="descripcion"> </p>
+                <p>Deporte: <select class="selectpicker" name="deporte"> 
+                    {% for deporte in deportes %}
+                    <option>{{deporte}}</option>
+                    {% endfor %}
+                </select></p>
+
+                <p>Marca: <select class="selectpicker" name="marca">
+                    {% for marca in marcas %}
+                    <option>{{marca}}</option>
+                    {% endfor %}
+                </select></p>
+                <p> Precio: <input type="number" name="precio"> </p>
+                <p> Publicacion: <input type="date" name="publicacion"> </p>
+                <p> Imagen: <input type="file" name="imagen"> </p>
+
+                <input type="submit" value="Crear articulo">
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

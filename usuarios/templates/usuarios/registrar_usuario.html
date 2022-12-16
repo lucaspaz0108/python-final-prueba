@@ -1,0 +1,21 @@
+{% extends "productos/base.html" %}
+
+{% block contenido %}
+
+<h1 class="mt-4"> Registrar nuevo usuario </h1>
+
+{% if errors %}
+    <p>Errores registro de usuario: {{errors}}</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <input type="submit" value="Registrar Usuario">
+</form>
+<p> </p>
+<p> Ya tenés una cuenta?? <a href="{% url 'usuarios-login' %}"> Iniciá sesión </a></p>
+
+{% endblock %}
