@@ -23,7 +23,9 @@ def articulos_listar(request,deporte_id):
     contexto = {"avatar":avatar_usuario(request.user),"articulos_resultado":lista_articulos,"cantidad":len(lista_articulos),"deporte":deporte_elegido}
     return render(request,"productos/articulos_listar.html", contexto)
 
-def deportes_nuevo(request):
+
+
+'''def deportes_nuevo(request):
     #acá me traigo los datos desde el formulario y los guardo en variables para luego crear la instancia
     if request.method == "POST":
         nombre_nuevo = request.POST["nombre"]
@@ -34,7 +36,7 @@ def deportes_nuevo(request):
         deportes_nuevo.save() #con esto lo guardo en la base de datos
         return redirect("productos-inicio")
         
-    return render(request, "productos/deportes_nuevo.html")
+    return render(request, "productos/deportes_nuevo.html")'''
 
 def articulo_nuevo(request):
     #acá me traigo los datos desde el formulario y los guardo en variables para luego crear la instancia
