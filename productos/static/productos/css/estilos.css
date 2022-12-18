@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;500;600;700;800&display=swap%27');
+
+.header_image{
+    height: 380px;
+    background-image:url('../assets/fondo-header_-2.svg')!important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+body{
+    background-color: #ffffff;
+background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg%27%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2346e8ff' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+footer{
+    background-image: url('../assets/slanted-gradient.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+nav{
+    background-color: rgb(170, 233, 230) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.btn-primary{
+    background-color: rgb(98, 177, 223)!important;
+    border-color: rgb(98, 177, 223) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.btn-primary:hover{
+    background-color: rgb(77, 148, 189)!important;
+    
+}
+
+.carta{
+    border-color: rgb(6, 158, 218) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.card-img-top {
+    width: 100% !important;
+    height: 20vw !important;
+    object-fit: cover !important;
+}
+
+.font{
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.bc{
+    background-color: white;
+    border-color: rgb(6, 158, 218) !important;
+}
+

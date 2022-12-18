@@ -3,14 +3,16 @@ from productos.models import *
 from usuarios.models import *
 from django.contrib.auth.decorators import login_required
 from usuarios.views import avatar_usuario
-
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 def inicio(request):
     deportes = Deporte.objects.all()
     contexto = {"avatar":avatar_usuario(request.user),"deporte_lista":deportes}
     return render(request,"productos/inicio.html",contexto)
+    
 
-# Función para listar todos los artículos
+
+
 @login_required
 def articulos_listar(request,deporte_id):
     if deporte_id == "0":
@@ -23,23 +25,31 @@ def articulos_listar(request,deporte_id):
     contexto = {"avatar":avatar_usuario(request.user),"articulos_resultado":lista_articulos,"cantidad":len(lista_articulos),"deporte":deporte_elegido}
     return render(request,"productos/articulos_listar.html", contexto)
 
+class DeportesList(ListView):
+
+    model = Deporte
+    template_name = "productos/deportes_listar.html"
 
 
-'''def deportes_nuevo(request):
-    #acá me traigo los datos desde el formulario y los guardo en variables para luego crear la instancia
+def deportes_nuevo(request):
     if request.method == "POST":
         nombre_nuevo = request.POST["nombre"]
         imagen_nuevo = request.FILES["imagen"]
                 
-        #creo una instancia llamada "persona_nueva" de la clase "Persona" con los atributos que traigo desde el formulario
         deportes_nuevo = Deporte(nombre=nombre_nuevo, imagen=imagen_nuevo)
         deportes_nuevo.save() #con esto lo guardo en la base de datos
         return redirect("productos-inicio")
         
-    return render(request, "productos/deportes_nuevo.html")'''
+    return render(request, "productos/deportes_nuevo.html")
+
+def deportes_eliminar(request, id_a_eliminar):
+    deporte_borrar = Deporte.objects.get(id=id_a_eliminar)
+    deporte_borrar.delete()
+
+    return redirect("listar-deporte")
 
 def articulo_nuevo(request):
-    #acá me traigo los datos desde el formulario y los guardo en variables para luego crear la instancia
+
     if request.method == "POST":
         deporte_nuevo = request.POST["deporte"]
         nombre_nuevo = request.POST["nombre"]
@@ -52,7 +62,6 @@ def articulo_nuevo(request):
         deporte_instancia = Deporte.objects.filter(nombre=deporte_nuevo)[0]
         marca_instancia = Marca.objects.filter(nombre=marca_nuevo)[0]
 
-        #creo una instancia llamada "articulo_nuevo" de la clase "Articulo" con los atributos que traigo desde el formulario
         articulo_nuevo = Articulo(deporte=deporte_instancia, nombre=nombre_nuevo,marca=marca_instancia, descripcion=descripcion_nuevo, precio=precio_nuevo, publicacion=publicacion_nuevo, imagen=imagen_nuevo)
         articulo_nuevo.save() #con esto lo guardo en la base de datos
         return redirect("productos-inicio")
@@ -94,3 +103,5 @@ def articulos_detalle(request,id_detalle):
     
     return render(request, "productos/articulo_detalle.html",{"articulo":articulo_detalle,"mensajes":mensajes_articulo})
     
+def sobre_nosotros(request):
+    return render(request, "productos/sobre_nosotros.html")

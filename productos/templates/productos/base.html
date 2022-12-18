@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     {% load static %}
@@ -8,79 +9,56 @@
         <meta name="author" content="" />
         <title>Mas DxT</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'productos/assets/favicon.ico' %}" />
+        <link rel="icon" type="image/x-icon" href="{% static 'productos/assets/logo.png' %}" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'productos/css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'productos/css/estilos.css' %}" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container px-4 px-lg-5">
-                {% if request.user.is_authenticated %}
-                <a class="btn btn-primary" href="{% url 'usuarios-logout' %}">Logout </a>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{request.user.first_name}}</a>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'usuarios-editar' %}">Editar datos</a>
-                        <a class="dropdown-item" href="#!">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#!">Something else here</a>
-                    </div>
-                </li>
-            {% else %}
-                <a class="btn btn-primary" href="{% url 'usuarios-login' %}">Login </a>
-            {% endif %}
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'productos-inicio' %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Sobre Nosotros</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'articulos-listar' 0 %}">Todos</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Basquet</a></li>
-                                <li><a class="dropdown-item" href="#!">Fútbol</a></li>
-                                <li><a class="dropdown-item" href="#!">Natación</a></li>
-                                <li><a class="dropdown-item" href="#!">Tenis</a></li>
-                                <li><a class="dropdown-item" href="#!">Voley</a></li>
-                            </ul>
-                        </li>
-                        <!--  
+                        <li class="nav-item"><a class="nav-link" href="{% url 'sobre-nosotros' %}">Sobre Nosotros</a></li>
+                        
                         {% if request.user.is_superuser %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{% url 'deportes-nuevo' %}">Nuevo Deporte</a></li>
+                                <li><a class="dropdown-item" href="{% url 'listar-deporte' %}">Modificar Deporte</a></li>
                                 <li><a class="dropdown-item" href="{% url 'articulo-nuevo' %}">Nuevo Articulo</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articulos-listar' 0 %}">Lista de Articulos</a></li>
                                 
                             </ul>
                         </li>
                         
                         {% endif %}
-                        -->
+                        
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
+                    {% if request.user.is_authenticated %}
+                        <a class="btn btn-primary" href="{% url 'usuarios-logout' %}">Logout </a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{request.user.first_name}}</a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'usuarios-editar' %}">Editar datos</a>
+                            </div>
+                        </li>
+                {% else %}
+                <a class="btn btn-primary" href="{% url 'usuarios-login' %}">Login </a>
+            {% endif %}
                 </div>
             </div>
         </nav>
         <!-- Header-->
-        <header style="background-image: 'https://png.pngtree.com/thumb_back/fh260/back_pic/04/07/48/465811cc88e057c.jpg';" class="bg-dark py-2">
-            <div style="background-image:'https://png.pngtree.com/thumb_back/fh260/back_pic/04/07/48/465811cc88e057c.jpg';"class="container px-4 px-lg-5 my-5">
-                <div style="background-image:'https://png.pngtree.com/thumb_back/fh260/back_pic/04/07/48/465811cc88e057c.jpg';"class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Mas DxT </h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Los mejores productos deportivos en un solo lugar</p>
-                </div>
-            </div>
-        </header>
+        <div class=" py-5 header_image">
+
+        </div>
         <!-- Section-->
         <section class="py-5">
 
@@ -90,8 +68,8 @@
 
         </section>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+        <footer class="py-5 ">
+            <div class="container"><p class="m-0 text-center text-dark">&copy; Copyright 2022  Todos los derechos reservados</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,19 +1,19 @@
 {% extends "productos/base.html" %}
 
 {% block contenido %}
+<div class=" text-center font">
+    <h1 class="mt-4"> Modificar datos de usuario </h1>
 
-<h1 class="mt-4"> Modificar datos de usuario </h1>
+    {% if errors %}
+        <p>Errores registro de usuario: {{errors}}</p>
+    {% endif %}
 
-{% if errors %}
-    <p>Errores registro de usuario: {{errors}}</p>
-{% endif %}
+    <form method="post">
+        {% csrf_token %}
 
-<form method="post">
-    {% csrf_token %}
+        {{form.as_p}}
 
-    {{form.as_p}}
-
-    <input type="submit" value="Guardar Modificaciones">
-</form>
-
+        <input class="btn-primary" type="submit" value="Guardar Modificaciones">
+    </form>
+</div>
 {% endblock %}

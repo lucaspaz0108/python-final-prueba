@@ -4,7 +4,7 @@ from productos.models import *
 
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to='avatares',null=True,blank=True,default="/default.jpeg")
+    imagen = models.ImageField(upload_to='avatares/',null=True,blank=True,default="/default.jpg")
 
 
 class Mensajes(models.Model):

@@ -10,28 +10,25 @@
                     <a class="btn btn-outline-dark mt-auto" href="{% url 'productos-inicio' %}">Volver</a>
                 {% else %}
                 <p></p>
-                <h5 class="fw-bolder">Artículos de {{deporte}}:</h5>
+                <h5 class="fw-bolder">Lista de deportes : </h5>
                 <p></p>
                 <p></p>
-                    {% for articulo in articulos_resultado %}
+                    {% for deporte in object_list %}
                         <div class="col mb-5">
-                            <div class="card carta h-100">
+                            <div class="card h-100">
                                 <!-- Product image-->
-                                <img class="card-img-top" src={{articulo.imagen.url}} alt="..." />
+                                <img class="card-img-top" src={{deporte.imagen.url}} alt="..." />
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <!-- Product name-->
-                                        <h5 class="fw-bolder">{{articulo.nombre}}</h5>
-                                        Precio ${{articulo.precio}}
+                                        <h5 class="fw-bolder">{{deporte.nombre}}</h5>
                                     </div>
                                 </div>
                                 <!-- Product actions-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center p-2"><a class="btn btn-outline-dark mt-auto btn-primary" href="{% url 'articulos-detalle' articulo.id %}">Ver detalle</a></div>
                                     {% if request.user.is_superuser %}
-                                    <div class="text-center p-2"><a class="btn btn-outline-dark mt-auto btn-primary" href="{% url 'articulos-eliminar' articulo.id %}">Eliminar artículo</a></div>
-                                    <div class="text-center p-2"><a class="btn btn-outline-dark mt-auto btn-primary" href="{% url 'articulos-editar' articulo.id %}">Editar artículo</a></div>
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'eliminar-deporte' deporte.id %}">Eliminar deporte</a></div>
                                     {% endif %}
                                 </div>
                             </div>

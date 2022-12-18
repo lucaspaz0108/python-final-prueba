@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate #funcines necesarias
 from django.contrib.auth.forms import AuthenticationForm
-from usuarios.forms import UserRegisterForm, UserEditForm
+from usuarios.forms import UserRegisterForm, UserEditForm, AvatarForm
 from usuarios.models import *
 from django.contrib.auth.decorators import login_required
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.models import User
+
 
 # importo el paquete os para manejar nombres de archivo
 import os
@@ -75,14 +79,17 @@ def editar_usuario(request):
 
     return render(request,"usuarios/editar_usuario.html", {"form":formulario,"usuario":usuario})
     
-def avatar_usuario(usuario_activo):
+def avatar_usuario(u_activo):
 
-    if usuario_activo.is_authenticated:
-        if len(Avatar.objects.filter(user= usuario_activo.id))==1:
-            imagen_model = Avatar.objects.filter(user= usuario_activo.id)[0]
+    if u_activo.is_authenticated:
+        if len(Avatar.objects.filter(user= u_activo.id))==1:
+            imagen_model = Avatar.objects.filter(user= u_activo.id)[0]
             imagen_url = imagen_model.imagen.url
         else:
             imagen_url=""
     else:
         imagen_url = ""
     return (imagen_url)
+    
+
+    

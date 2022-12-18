@@ -20,9 +20,10 @@ class UserEditForm(UserChangeForm):
     first_name = forms.CharField(label="Nombre")
     last_name = forms.CharField(label="Apellido")
     email = forms.EmailField(label="Correo electrónico")
-
     class Meta:
         model = User
         fields = ["first_name","last_name","email"]
-        help_texts = { "email": "Indica un correo electronico que uses habitualmente", "first_name": "", "last_name": ""}
-   
+        help_texts = {k:"" for k in fields} 
+        
+class AvatarForm(forms.Form):
+    imagen = forms.ImageField()
